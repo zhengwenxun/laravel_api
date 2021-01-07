@@ -20,8 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'LoginController@login');
 Route::post('logout', 'LoginController@logout');
-Route::any('register', 'RegisterController@register');
+Route::post('register', 'RegisterController@register');
+
+Route::any('pay', 'PayController@pay');
 
 Route::middleware('refreshtoken')->group(function($router) {
-    Route::post('test', 'AnimalController@test');
+
 });
