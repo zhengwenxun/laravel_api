@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::post('login', 'LoginController@login');
 Route::post('logout', 'LoginController@logout');
 Route::any('register', 'RegisterController@register');
+
+Route::middleware('refreshtoken')->group(function($router) {
+    Route::post('test', 'AnimalController@test');
+});
