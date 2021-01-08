@@ -3,30 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Yansongda\Pay\Pay;
-use Yansongda\Pay\Log;
+use Pay;
 
 class PayController extends Controller
 {
-    protected $config = [
-        'app_id' => '',
-        'notify_url' => '',
-        'return_url' => '',
-        'ali_public_key' => '',// 加密方式： **RSA2**
-        'private_key' => '',
-        'log' => [ // optional
-            'file' => './logs/alipay.log',
-            'level' => 'info', // 建议生产环境等级调整为 info，开发环境为 debug
-            'type' => 'single', // optional, 可选 daily.
-            'max_file' => 30, // optional, 当 type 为 daily 时有效，默认 30 天
-        ],
-        'http' => [ // optional
-            'timeout' => 5.0,
-            'connect_timeout' => 5.0,
-            // 更多配置项请参考 [Guzzle](https://guzzle-cn.readthedocs.io/zh_CN/latest/request-options.html)
-        ],
-        //'mode' => 'dev', // optional,设置此参数，将进入沙箱模式
-    ];
 
     public function pay(){
         $order = [
@@ -35,14 +15,14 @@ class PayController extends Controller
             'subject' => 'test subject - 测试',
         ];
 
-        $alipay = Pay::alipay($this->config)->web($order);
+        $alipay = Pay::alipay()->web($order);
 
         return $alipay;// laravel 框架中请直接 `return $alipay`
     }
 
     public function return()
     {
-        $data = Pay::alipay($this->config)->verify(); // 是的，验签就这么简单！
+        $data = Pay::alipay()->verify(); // 是的，验签就这么简单！
 
         // 订单号：$data->out_trade_no
         // 支付宝交易号：$data->trade_no
