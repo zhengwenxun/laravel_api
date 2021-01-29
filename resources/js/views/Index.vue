@@ -1,20 +1,15 @@
 <template>
-  <v-app>
-    <v-app-bar app></v-app-bar>
-    <v-main>
-      <v-container>
-        <router-link to="/user">Go to USER</router-link>
-        Hello World
+    <v-app>
+        <AppBar/>
         <router-view/>
-      </v-container>
-    </v-main>
-  </v-app>
+    </v-app>
 </template>
 <script>
-
+import AppBar from '@/components/AppBar.vue'
 export default {
     name: 'Index',
     components:{
+        AppBar
     },
     data: () => ({
 

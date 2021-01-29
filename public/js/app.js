@@ -559,6 +559,18 @@ var routes = [{
     component: function component() {
       return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! @/views/User.vue */ "./resources/js/views/User.vue"));
     }
+  }, {
+    path: 'auth/login',
+    name: 'login',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! @/views/auth/Login.vue */ "./resources/js/views/auth/Login.vue"));
+    }
+  }, {
+    path: 'auth/register',
+    name: 'register',
+    component: function component() {
+      return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! @/views/auth/Register.vue */ "./resources/js/views/auth/Register.vue"));
+    }
   }]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1___default.a({
